@@ -4,7 +4,7 @@ public class PlayerWallet
 {
     public Guid Id { get; init; }
 
-    // The list and AddTransaction method below are in memory substitutes for the purposr of this task
+    // The list and AddTransaction method below are in memory substitutes for the purpose of this task
     private readonly List<Transaction> _transactions = new();
     public IReadOnlyList<Transaction> Transactions => _transactions;
 
