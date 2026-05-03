@@ -12,7 +12,7 @@ public class PlayerWallet
     .Where(t => t.Status == TransactionStatus.Completed)
     .Sum(t => t.Type == TransactionType.Deposit
         ? t.Amount
-        : -t.Amount), 2);
+        : -t.Amount), 2, MidpointRounding.ToEven);
 
     public void AddTransaction(Transaction transaction)
     {
