@@ -4,7 +4,6 @@ public class PlayerWallet
 {
     public Guid Id { get; init; }
 
-    // In a real world scenario Transactions would be in a separate table linked by WalletId, and Balance could be computed via a db query
     // The list and AddTransaction method below are in memory substitutes for the purposr of this task
     private readonly List<Transaction> _transactions = new();
     public IReadOnlyList<Transaction> Transactions => _transactions;
