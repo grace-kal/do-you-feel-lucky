@@ -1,6 +1,5 @@
 ﻿using DoYouFeelLucky.App.Constants;
 using DoYouFeelLucky.Wallet.Interfaces;
-using DoYouFeelLucky.Wallet.Services;
 
 namespace DoYouFeelLucky.App.Commands;
 

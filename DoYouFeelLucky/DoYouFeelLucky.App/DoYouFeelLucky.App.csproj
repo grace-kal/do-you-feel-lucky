@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DoYouFeelLucky.Common\DoYouFeelLucky.Common.csproj" />
     <ProjectReference Include="..\DoYouFeelLucky.Services\DoYouFeelLucky.Wallet.csproj" />
+    <ProjectReference Include="..\DoYouFeelLucky.Wallet\DoYouFeelLucky.Wallet.csproj" />
   </ItemGroup>
 
   <ItemGroup>

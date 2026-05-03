@@ -9,11 +9,11 @@ public class PlayerWallet
     private readonly List<Transaction> _transactions = new();
     public IReadOnlyList<Transaction> Transactions => _transactions;
 
-    public decimal Balance => _transactions
-        .Where(t => t.Status == TransactionStatus.Completed)
-        .Sum(t => t.Type == TransactionType.Deposit
-            ? t.Amount
-            : -t.Amount);
+    public decimal Balance => Math.Round(_transactions
+    .Where(t => t.Status == TransactionStatus.Completed)
+    .Sum(t => t.Type == TransactionType.Deposit
+        ? t.Amount
+        : -t.Amount), 2);
 
     public void AddTransaction(Transaction transaction)
     {
