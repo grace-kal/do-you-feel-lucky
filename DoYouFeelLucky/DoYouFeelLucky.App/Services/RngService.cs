@@ -9,5 +9,5 @@ public class RngService : IRngService
     public double Roll() => _random.NextDouble();
 
     public decimal GetRandomDecimal(decimal min, decimal max) =>
-        min + (decimal)_random.NextDouble() * (max - min);
+    Math.Round(min + (decimal)_random.NextDouble() * (max - min), 2);
 }

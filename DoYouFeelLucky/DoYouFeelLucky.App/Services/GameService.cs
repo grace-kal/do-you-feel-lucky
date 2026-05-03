@@ -19,7 +19,7 @@ public class GameService(IWalletService walletService, IRngService rngService, I
         var roll = rngService.Roll();
         var outcome = DetermineOutcome(roll);
         var multiplier = CalculateMultiplier(outcome);
-        var winAmount = amount * multiplier;
+        var winAmount = Math.Round(amount * multiplier, 2);
 
         if (winAmount > 0)
         {
