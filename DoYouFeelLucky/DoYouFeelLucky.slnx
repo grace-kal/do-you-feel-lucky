@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DoYouFeelLucky.App/DoYouFeelLucky.App.csproj" />
+  <Project Path="DoYouFeelLucky.Common/DoYouFeelLucky.Common.csproj" Id="ec17e7a9-e683-43ce-905b-8d4963156d17" />
+  <Project Path="DoYouFeelLucky.Services/DoYouFeelLucky.Wallet.csproj" />
+  <Project Path="DoYouFeelLucky.UnitTests/DoYouFeelLucky.UnitTests.csproj" />
+</Solution>
