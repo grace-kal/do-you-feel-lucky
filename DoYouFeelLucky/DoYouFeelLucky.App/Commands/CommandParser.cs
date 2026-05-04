@@ -14,34 +14,34 @@ public class CommandParser(IWalletService walletService, IGameService gameServic
     public ICommand Parse(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
-            return new InvalidCommand(Messages.Commands.EmptyInput);
+            return new InvalidCommand(Messages.CommandMessages.EmptyInput);
 
         var parts = input.Trim().ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries);
         var command = parts[0];
 
         return command switch
         {
-            "exit" => new ExitCommand(),
-            "deposit" => ParseAmountCommand(parts, CreateDepositCommand),
-            "withdraw" => ParseAmountCommand(parts, CreateWithdrawCommand),
-            "bet" => ParseBetCommand(parts),
-            _ => new InvalidCommand(string.Format(Messages.Commands.UnknownCommand, command))
+            Messages.Commands.Exit => new ExitCommand(),
+            Messages.Commands.Deposit => ParseAmountCommand(parts, CreateDepositCommand),
+            Messages.Commands.Withdraw => ParseAmountCommand(parts, CreateWithdrawCommand),
+            Messages.Commands.Bet => ParseBetCommand(parts),
+            _ => new InvalidCommand(string.Format(Messages.CommandMessages.UnknownCommand, command))
         };
     }
 
     private ICommand ParseAmountCommand(string[] parts, Func<decimal, ICommand> createCommand)
     {
         if (parts.Length < 2)
-            return new InvalidCommand(Messages.Commands.ProvideValidAmount);
+            return new InvalidCommand(Messages.CommandMessages.ProvideValidAmount);
 
         if (parts.Length > 2)
-            return new InvalidCommand(Messages.Commands.InvalidFormat);
+            return new InvalidCommand(Messages.CommandMessages.InvalidFormat);
 
         if (!decimal.TryParse(parts[1], out var amount))
-            return new InvalidCommand(Messages.Commands.AmountMustBeNumber);
+            return new InvalidCommand(Messages.CommandMessages.AmountMustBeNumber);
 
         if (amount <= 0)
-            return new InvalidCommand(Messages.Commands.AmountMustBePositive);
+            return new InvalidCommand(Messages.CommandMessages.AmountMustBePositive);
 
         return createCommand(amount);
     }
@@ -49,16 +49,16 @@ public class CommandParser(IWalletService walletService, IGameService gameServic
     private ICommand ParseBetCommand(string[] parts)
     {
         if (parts.Length < 2)
-            return new InvalidCommand(Messages.Commands.ProvideValidAmount);
+            return new InvalidCommand(Messages.CommandMessages.ProvideValidAmount);
 
         if (parts.Length > 2)
-            return new InvalidCommand(Messages.Commands.InvalidFormat);
+            return new InvalidCommand(Messages.CommandMessages.InvalidFormat);
 
         if (!decimal.TryParse(parts[1], out var amount))
-            return new InvalidCommand(Messages.Commands.AmountMustBeNumber);
+            return new InvalidCommand(Messages.CommandMessages.AmountMustBeNumber);
 
         if (amount <= 0)
-            return new InvalidCommand(Messages.Commands.AmountMustBePositive);
+            return new InvalidCommand(Messages.CommandMessages.AmountMustBePositive);
 
         if (amount < settings.MinBet || amount > settings.MaxBet)
             return new InvalidCommand(string.Format(Messages.Game.BetOutOfRange, settings.MinBet, settings.MaxBet));

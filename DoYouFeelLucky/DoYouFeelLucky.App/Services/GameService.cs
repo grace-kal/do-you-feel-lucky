@@ -1,5 +1,6 @@
 ﻿using DoYouFeelLucky.App.Common;
 using DoYouFeelLucky.App.Configuration;
+using DoYouFeelLucky.App.Constants;
 using DoYouFeelLucky.App.Interfaces;
 using DoYouFeelLucky.App.Models;
 using DoYouFeelLucky.Wallet.Interfaces;
@@ -13,6 +14,9 @@ public class GameService(IWalletService walletService, IRngService rngService, I
 
     public async Task<BetResult> PlaceBetAsync(Guid walletId, Guid correlationId, decimal amount)
     {
+        if (amount < settings.MinBet || amount > settings.MaxBet)
+            return Failure(string.Format(Messages.Game.BetOutOfRange, settings.MinBet, settings.MaxBet));
+
         var debitResult = await walletService.WithdrawAsync(walletId, correlationId, Guid.NewGuid(), amount);
         if (!debitResult.Success) return Failure(debitResult.ErrorMessage!);
 

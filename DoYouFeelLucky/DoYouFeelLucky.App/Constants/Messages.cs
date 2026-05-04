@@ -3,7 +3,7 @@ namespace DoYouFeelLucky.App.Constants;
 
 public static class Messages
 {
-    public static class Commands
+    public static class CommandMessages
     {
         public const string EmptyInput = "Please enter a command.";
         public const string InvalidFormat = "Invalid format.";
@@ -11,6 +11,14 @@ public static class Messages
         public const string AmountMustBeNumber = "Amount must be a valid number.";
         public const string AmountMustBePositive = "Amount must be a positive number.";
         public const string UnknownCommand = "Unknown command '{0}'. Valid commands are: deposit, withdraw, bet, exit.";
+    }
+
+    public static class Commands
+    {
+        public const string Exit = "exit";
+        public const string Bet = "bet";
+        public const string Deposit = "deposit";
+        public const string Withdraw = "withdraw";
     }
 
     public static class Wallet
